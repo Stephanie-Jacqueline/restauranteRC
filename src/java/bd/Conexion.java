@@ -16,18 +16,13 @@ public class Conexion {
     private String pwd;
 
     public Conexion() {
-
     }
-
-  
     
-    public void Conectar(){
-        
+    public void Conectar(){     
     }
     
      
-    public void Desconectar(){
-        
+    public void Desconectar(){  
     }
     
      
