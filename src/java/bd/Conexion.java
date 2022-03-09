@@ -5,36 +5,51 @@
    Fecha actualización:08 de marzo del 2022.
 */
 package bd;
-
-import jakarta.jms.Connection;
+import java.sql.*;
 
 public class Conexion {
-
-    private Connection conexion;
-    private String url;
-    private String user;
-    private String pwd;
+private Connection connection;
+    private String url="jdbc:postgresql://localhost/RestauranteCR";
+    private String user="postgres";
+    private String pwd="fany";
 
     public Conexion() {
     }
     
-    public void Conectar(){     
+    public void conectar(){
+       try{
+           Class.forName("org.postgresql.Driver");
+           connection  = DriverManager.getConnection(url,user,pwd);
+           System.out.println("conexión establecida"); 
+       }catch(Exception ex){
+           System.out.println("Error al conectar:"+ ex.getMessage());
+       }
+    }
+
+    public void desconectar(){
+        try {
+            connection.close();
+            System.out.println("Conexion cerrada");
+        } catch (Exception e) {
+            System.out.println("No existe conexion");
+        }
+        
     }
     
-     
-    public void Desconectar(){  
+    public Connection getConnection() {
+        return connection;
     }
     
-     
-    public void getConnection(){
+    public static void main(String[] args) {
+        Conexion c1 = new Conexion();
+        c1.conectar();
+        
+        
         
         
         
     }
 
-     
-    public void main(){
-        
-    }
+    
     
 }
