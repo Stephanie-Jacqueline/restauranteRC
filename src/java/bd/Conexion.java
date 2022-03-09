@@ -42,8 +42,7 @@ private Connection connection;
     
     public static void main(String[] args) {
         Conexion c1 = new Conexion();
-        c1.conectar();
-            
+        c1.conectar();  
     }
 
     
