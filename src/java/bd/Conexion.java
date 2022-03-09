@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class Conexion {
 private Connection connection;
-    private String url="jdbc:postgresql://localhost/RestauranteCR";
+    private String url="jdbc:postgresql://localhost/";
     private String user="postgres";
     private String pwd="fany";
 
@@ -20,18 +20,18 @@ private Connection connection;
        try{
            Class.forName("org.postgresql.Driver");
            connection  = DriverManager.getConnection(url,user,pwd);
-           System.out.println("conexión establecida"); 
+           System.out.println("LA CONEXION FUE ESTABLECIDA"); 
        }catch(Exception ex){
-           System.out.println("Error al conectar:"+ ex.getMessage());
+           System.out.println("EROR"+ ex.getMessage());
        }
     }
 
     public void desconectar(){
         try {
             connection.close();
-            System.out.println("Conexion cerrada");
+            System.out.println("LA CONEXION FUE CERRADA");
         } catch (Exception e) {
-            System.out.println("No existe conexion");
+            System.out.println("ERROR:"+e.getMessage());
         }
         
     }
@@ -41,8 +41,8 @@ private Connection connection;
     }
     
     public static void main(String[] args) {
-        Conexion c1 = new Conexion();
-        c1.conectar();  
+        Conexion con = new Conexion();
+        con.conectar();  
     }
 
     
